@@ -10,31 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_pepino_com_mel(char **str, int *signal)
-{
-	while (*str && (**str == ' ' || **str == '\n' || **str == '\t'
-		|| **str == '\v' || **str == '\f' || **str == '\r'))
-		(*str)++;
-	while (**str == '-' || **str == '+')
-	{
-		if (**str == '-')
-			*signal *= -1;
-		(*str)++;
-	}
-}
+#include "libft.h"
 
-int		ft_atoi(char *str)
+int			ft_atoi(const char *str)
 {
-	int	soma;
-	int	signal;
+	int		sign;
+	char	*cur;
+	int		result;
 
-	soma = 0;
-	signal = 1;
-	ft_pepino_com_mel(&str, &signal);
-	while (*str && *str >= '0' && *str <= '9')
+	result = 0;
+	cur = (char *)str;
+	while (ft_isspace(*cur))
+		cur++;
+	sign = (*cur == '-') ? -1 : 1;
+	cur = (*cur == '+' || *cur == '-') ? cur + 1 : cur;
+	while (*cur >= '0' && *cur <= '9')
 	{
-		soma = soma * 10 + (*str - '0');
-		++str;
+		result = result * 10 + *cur - 48;
+		cur++;
 	}
-	return (soma * signal);
+	result *= sign;
+	return (result);
 }
