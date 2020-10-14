@@ -10,22 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(char *str)
-{
-	int i;
-	int a;
-	int z;
+#include "libft.h"
 
-	a = 65;
-	z = 90;
-	i = 0;
-	while (str[i] != '\0')
+t_bool	ft_isalpha(int c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 	{
-		if (!((str[i] >= a && str[i] <= z) || (str[i] >= 97 && str[i] <= 122)))
-		{
-			return (0);
-		}
-		i++;
+		return (true);
 	}
-	return (1);
+	return (false);
 }

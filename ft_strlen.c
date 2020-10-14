@@ -10,15 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
-{
-	int i;
+#include <string.h>
 
-	i = 0;
-	while (*str != '\0')
-	{
-		str++;
-		i++;
-	}
-	return (i);
+size_t	ft_strlen(const char *s)
+{
+	const char	*eos;
+
+	eos = s;
+	while (*eos != '\0')
+		eos++;
+	return (eos - s);
 }

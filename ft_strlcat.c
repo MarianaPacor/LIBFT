@@ -10,25 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	len_dest;
-	unsigned int	len_src;
+#include <string.h>
+#include "libft.h"
 
-	len_src = 0;
-	len_dest = 0;
-	while (src[len_src] != '\0')
-		len_src++;
-	while (dest[len_dest] != '\0' && len_dest < size)
-		len_dest++;
-	i = len_dest;
-	while (size && src[i - len_dest] != '\0' && i < (size - 1))
+size_t  ft_strlcat(char *dst, const char *src, size_t size)
+{
+	char	*cur;
+	char 	*reader;
+	size_t	len;
+
+	cur = (char *)ft_memchr(dst, '\0', size);
+	if (cur == NULL)
+		return (size + ft_strlen(src));
+	reader = (char *)src;
+	len = (size_t)(cur - dst) + ft_strlen(reader);
+	while ((size_t)(cur - dst) < size - 1 && *reader != '\0')
 	{
-		dest[i] = src[i - len_dest];
-		i++;
+		*cur = *reader;
+		cur++;
+		reader++;
 	}
-	if (len_dest < size)
-		dest[i] = '\0';
-	return (len_dest + len_src);
+	*cur = '\0';
+	return (len);
 }

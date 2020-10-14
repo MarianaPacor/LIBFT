@@ -10,18 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(char *str)
-{
-	int i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i] != '\0')
+t_bool	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
 	{
-		if (!(str[i] >= 48 && str[i] <= 57))
-		{
-			return (0);
-		}
-		i++;
+		return (true);
 	}
-	return (1);
+	return (false);
 }

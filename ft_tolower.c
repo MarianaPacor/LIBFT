@@ -10,16 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_tolower(char *str)
+int		ft_tolower(int c)
 {
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
+	if (c >= 'A' && c <= 'Z')
 	{
-		if (str[i] >= 65 && str[i] <= 90)
-			str[i] = str[i] + 32;
-		i++;
+		return (c - 'A' + 'a');
 	}
-	return (str);
+	return (c);
 }

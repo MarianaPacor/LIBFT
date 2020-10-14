@@ -10,18 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isprint(char *str)
-{
-	int i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i] != '\0')
+t_bool	ft_isprint(int c)
+{
+	if (c >= 32 && c <= 126)
 	{
-		if (!(str[i] > 31 || str[i] == 127))
-		{
-			return (0);
-		}
-		i++;
+		return (true);
 	}
-	return (1);
+	return (false);
 }
