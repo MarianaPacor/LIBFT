@@ -10,21 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char		*ft_strrchr(const char *s, int c)
 {
-	char	*cur;
+	int		i;
 
-	cur = (char *)s + ft_strlen(s);
-	while (*cur != c)
+	i = ft_strlen(s);
+	if (c == 0)
+		return ((char *)s + i);
+	while (i >= 0)
 	{
-		if (cur == s)
-		{
-			return (NULL);
-		}
-		cur--;
+		if (s[i] == c)
+			return ((char *)s + i);
+		i--;
 	}
-	return (cur);
+	return (NULL);
 }

@@ -14,21 +14,26 @@
 
 int			ft_atoi(const char *str)
 {
-	int		sign;
-	char	*cur;
-	int		result;
+	long			res;
+	long			sign;
+	unsigned int	i;
 
-	result = 0;
-	cur = (char *)str;
-	while (ft_isspace(*cur))
-		cur++;
-	sign = (*cur == '-') ? -1 : 1;
-	cur = (*cur == '+' || *cur == '-') ? cur + 1 : cur;
-	while (*cur >= '0' && *cur <= '9')
+	res = 0;
+	sign = 1;
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
+			str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
+			i++;
+		if (str[i] == '-' || str[i] == '+')
+			{
+				if (str[i] == '-')
+					sign = -1;
+					i++;
+			}
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		result = result * 10 + *cur - 48;
-		cur++;
+		res = res * 10 + str[i] - '0';
+		i++;
 	}
-	result *= sign;
-	return (result);
+	return ((int)(res * sign));
 }

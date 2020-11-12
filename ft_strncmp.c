@@ -10,19 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int			ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	len;
-	size_t	len2;
-	int		result;
+	size_t	i;
 
-	len = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	len = (len <= len2) ? len + 1 : len2 + 1;
-	len = (len <= n) ? len : n;
-	result = ft_memcmp(s1, s2, len);
-	return (result);
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] != '\0' && s1[i] == s2[i] && i < n - 1)
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
