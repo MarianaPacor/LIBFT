@@ -10,4 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list	*ptr;
+
+	if (!lst || !f)
+		return (NULL);
+	if (!(ptr = ft_lstnew(f(lst->content))))
+	{
+		ft_lstclear(&ptr, del);
+		return (NULL);
+	}
+	ptr->next = ft_lstmap(lst->next, f, del);
+	return (ptr);
+}
