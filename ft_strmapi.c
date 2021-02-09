@@ -6,7 +6,7 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:33:46 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/09 21:35:40 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/09 21:53:13 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	}
 	return (ptr);
 }
-
