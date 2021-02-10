@@ -6,12 +6,12 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:35:18 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/09 21:53:13 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/10 15:21:06 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIBFT_H
+#define LIBFT_H
 
 # include <string.h>
 # include <unistd.h>
@@ -49,7 +49,7 @@ char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strdup(const char *src);
 char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
-unsigned int	    ft_strlcpy(char *dest, char *src, unsigned int size);
+unsigned int		ft_strlcpy(char *dest, char *src, unsigned int size);
 size_t				ft_strlen(const char *s);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
