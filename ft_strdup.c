@@ -6,20 +6,31 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:33:07 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/09 21:53:13 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/10 20:56:15 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *src)
-{
-	char *dest;
+#include "libft.h"
 
-	dest = malloc((ft_strlen(src) + 1) * sizeof(char));
-	if (dest == NULL)
+char		*ft_strdup(const char *s1)
+{
+	int			i;
+	char		*ret;
+
+	i = 0;
+	while (s1[i] != '\0')
+		i++;
+	ret = (char*)malloc(sizeof(char) * (i + 1));
+	if (ret == 0)
 		return (0);
-	ft_strlcpy(dest, (char *)src, (ft_strlen(src) + 1));
-	return (dest);
-	free(dest);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		ret[i] = s1[i];
+		i++;
+	}
+	ret[i] = '\0';
+	return (ret);
 }
