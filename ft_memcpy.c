@@ -6,25 +6,27 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:31:53 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/09 21:53:13 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/10 21:11:22 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dest, void const *src, size_t n)
 {
-	size_t	i;
-	char	*d;
-	char	*s;
+	int			i;
+	char		*des;
+	const char	*sr;
 
 	i = 0;
-	d = (char *)dst;
-	s = (char *)src;
-	while (i < n)
+	des = dest;
+	sr = src;
+	if (dest == NULL && src == NULL)
+		return (dest);
+	while (i < (int)n)
 	{
-		d[i] = s[i];
+		des[i] = sr[i];
 		i++;
 	}
-	return (dst);
+	return (dest);
 }
