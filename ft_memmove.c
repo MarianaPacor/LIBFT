@@ -6,32 +6,29 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:32:02 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/10 21:12:04 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/10 21:19:29 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *s1, void const *s2, size_t n)
-{
-	size_t		i;
-	const char	*src;
-	char		*dst;
+#include "libft.h"
 
-	if (s1 == NULL && s2 == NULL)
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	unsigned char		*d;
+	const unsigned char *s;
+
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	if (d == NULL && s == NULL)
 		return (NULL);
-	src = s2;
-	dst = s1;
-	if (dst > src)
-	{
-		i = n;
-		while (i > 0)
-		{
-			dst[i - 1] = src[i - 1];
-			i--;
-		}
-	}
-	else if (dst < src)
-		ft_memcpy(dst, src, n);
-	return (s1);
+	if (d == s || n == 0)
+		return ((void *)d);
+	if (d < s)
+		ft_memcpy(d, s, n);
+	else
+		while (n--)
+			*(d + n) = *(s + n);
+	return ((void *)d);
 }
