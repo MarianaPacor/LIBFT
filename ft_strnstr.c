@@ -6,7 +6,7 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:34:18 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/10 21:20:25 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/10 21:27:29 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	i;
-	size_t	j;
+	size_t i;
+	size_t j;
 
+	if (!haystack && !len)
+		return (NULL);
 	i = 0;
-	if (!*needle)
-		return ((char *)&haystack[i]);
-	while (haystack[i] && i < len)
+	if (!needle[0])
+		return ((char*)haystack);
+	while (haystack[i] != 0 && i < len)
 	{
 		j = 0;
-		while (needle[j] == haystack[i + j] && (i + j) < len)
+		while (haystack[i + j] == needle[j] && (i + j) < len)
 		{
-			if (needle[j + 1] == '\0')
-				return ((char *)&haystack[i]);
 			j++;
+			if (needle[j] == '\0')
+				return ((char*)&haystack[i]);
 		}
 		i++;
 	}
