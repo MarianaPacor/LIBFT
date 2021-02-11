@@ -6,23 +6,26 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:30:36 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/09 21:53:13 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/11 18:37:14 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*ptr;
+	t_list **tmp;
+	t_list *def;
 
-	if (!lst || !f)
-		return (NULL);
-	if (!(ptr = ft_lstnew(f(lst->content))))
+	def = NULL;
+	tmp = &def;
+	while (lst)
 	{
-		ft_lstclear(&ptr, del);
-		return (NULL);
+		*tmp = NULL;
+		if (!(*tmp = (*f)(lst)))
+			return (NULL);
+		tmp = &((*tmp)->next);
+		lst = lst->next;
 	}
-	ptr->next = ft_lstmap(lst->next, f, del);
-	return (ptr);
+	return (def);
 }
