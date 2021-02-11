@@ -6,37 +6,25 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:34:18 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/11 18:35:24 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/11 18:48:04 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *str, const char *to_find, size_t len)
+char	*ft_strnstr(const char *s_big, const char *s_small, size_t len)
 {
-	size_t	i;
-	size_t	j;
+	size_t	len_small;
 
-	if (!*to_find)
-		return ((char*)str);
-	i = 0;
-	while (str[i])
+	if (!*s_small)
+		return ((char *)s_big);
+	len_small = ft_strlen(s_small);
+	while (*s_big && len >= len_small)
 	{
-		j = 0;
-		while (to_find[j] && to_find[j] == str[i] && i < len)
-		{
-			i++;
-			j++;
-			if (!to_find[j])
-				return ((char*)&str[i - j]);
-			if (to_find[j] != str[i])
-			{
-				i = i - j;
-				j = 0;
-				break ;
-			}
-		}
-		i++;
+		if (*(s_big) == *s_small && !ft_memcmp(s_big, s_small, len_small))
+			return ((char *)(s_big));
+		s_big++;
+		len--;
 	}
 	return (NULL);
 }

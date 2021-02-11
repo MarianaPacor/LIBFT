@@ -6,7 +6,7 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:30:52 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/09 21:53:13 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/11 18:50:03 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int		ft_lstsize(t_list *lst)
 {
 	int		i;
-	t_list	*temp;
+	t_list	*tmp;
 
-	temp = lst;
 	i = 0;
-	while (temp)
+	tmp = lst;
+	while (tmp)
 	{
-		temp = temp->next;
+		tmp = tmp->next;
 		i++;
 	}
 	return (i);
