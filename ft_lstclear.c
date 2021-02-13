@@ -6,7 +6,7 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:29:51 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/13 21:45:28 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/13 21:59:25 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list *tmp;
+	t_list	*aux;
 
-	while (*lst != NULL)
+	while (*lst)
 	{
+		aux = (*lst)->next;
 		(*del)((*lst)->content);
-		tmp = *lst;
-		*lst = tmp->next;
-		free(tmp);
+		free(*lst);
+		*lst = aux;
 	}
-	*lst = NULL;
+	lst = NULL;
 }

@@ -6,30 +6,30 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:30:36 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/13 21:35:23 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/13 22:06:10 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list		*new;
-	t_list		*list;
+	t_list	*aux;
+	t_list	*ans;
 
-	if (!lst)
+	if (lst == NULL || f == NULL)
 		return (NULL);
-	list = f(lst);
-	new = list;
-	while (lst->next)
+	ans = NULL;
+	while (lst != NULL)
 	{
-		lst = lst->next;
-		if (!(list->next = f(lst)))
+		aux = ft_lstnew((*f)(lst->content));
+		if (!(aux))
 		{
-			free(list->next);
+			ft_lstclear(&ans, del);
 			return (NULL);
 		}
-		list = list->next;
+		ft_lstadd_back(&ans, aux);
+		lst = lst->next;
 	}
-	return (new);
+	return (ans);
 }

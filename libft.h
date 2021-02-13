@@ -6,7 +6,7 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:35:18 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/13 21:55:24 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/13 22:06:04 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ int					ft_toupper(int c);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstclear(t_list **lst, void (*del)(void*));
-void				ft_lstdelone(t_list **lst, void (*del)(void *, size_t));
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+void				ft_lstdelone(t_list *lst, void (*del)(void*));
+void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstlast(t_list *lst);
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-t_list				*ft_lstnew(void const *content, size_t content_size);
+t_list				*ft_lstmap(t_list *lst, void*(*f)(void*), void(*del)(void*));
+t_list				*ft_lstnew(void *content);
 int					ft_lstsize(t_list *lst);
 
 #endif
