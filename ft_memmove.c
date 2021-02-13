@@ -6,7 +6,7 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:32:02 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/11 18:47:27 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/13 19:30:35 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	p_src = (const unsigned char *)src;
 	p_dst = (unsigned char *)dst;
+	if (!dst && !src)
+		return (0);
 	if (p_src < p_dst)
 	{
 		p_src += len - 1;
