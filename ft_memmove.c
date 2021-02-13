@@ -6,7 +6,7 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:32:02 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/13 19:39:07 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/13 19:43:55 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	const unsigned char	*p_src;
-	unsigned char		*p_dst;
+	char	*srcc;
+	char	*dstc;
+	size_t	i;
 
-	p_src = (const unsigned char *)src;
-	p_dst = (unsigned char *)dst;
-	if (p_src < p_dst)
-	{
-		p_src += len - 1;
-		p_dst += len - 1;
-		while (len--)
-			*p_dst-- = *p_src--;
-	}
+	i = -1;
+	srcc = (char *)src;
+	dstc = (char *)dst;
+	if (srcc < dstc)
+		while ((int)(--len) >= 0)
+			*(dstc + len) = *(srcc + len);
 	else
-		ft_memcpy(dst, src, len);
+		while (++i < len)
+			*(dstc + i) = *(srcc + i);
 	return (dst);
 }
