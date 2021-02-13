@@ -6,7 +6,7 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:31:53 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/13 19:55:56 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/13 19:59:22 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	ptr = dst;
 	ptr2 = (char *)src;
 	i = -1;
-	while (++i < n)
-		*(ptr + i) = *(ptr2 + i);
-	return (dst);
 	if (!dst && !src)
 	{
 		return(0);
 	}
+	while (++i < n)
+		*(ptr + i) = *(ptr2 + i);
+	return (dst);
+	
 }
