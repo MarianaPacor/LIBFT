@@ -6,34 +6,27 @@
 /*   By: mpacor <mpacor@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 21:27:31 by mpacor            #+#    #+#             */
-/*   Updated: 2021/02/10 17:01:51 by mpacor           ###   ########.fr       */
+/*   Updated: 2021/02/15 00:18:26 by mpacor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_atoi(const char *str)
+long long	ft_atoi(char *s)
 {
-	long			res;
-	long			sign;
-	unsigned int	i;
+	long long	nb;
+	int			i;
 
-	res = 0;
-	sign = 1;
 	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
-			str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	nb = 0;
+	while ((*s == ' ' || *s == '\n' || *s == '\t') && *s != '\0')
+		s++;
+	s[i] == '-' || s[i] == '+' ? i++ : i;
+	while (s[i] > 47 && s[i] < 58)
 	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
+		nb *= 10;
+		nb += s[i++] - 48;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = res * 10 + str[i] - '0';
-		i++;
-	}
-	return ((int)(res * sign));
+	nb = s[0] == '-' ? nb * -1 : nb;
+	return (nb);
 }
